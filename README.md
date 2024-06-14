@@ -16,7 +16,7 @@ failed to run header_filter_by_lua*: /usr/local/share/lua/5.1/kong/globalpatches
 ```
 
 ## Options
-Two options are available in the `header_filter` or `body_filter` phases to workaround the limitation:
+Two options are available in the `header_filter` or `body_filter` phases to build a custom plugin and workaround the limitation:
 1) **Asynchronous** call of the Http Endpoint
 - Use `ngx.timer.at` for invoking asynchronously a Lua function (called `asyncHttpCall`) in a background "light thread"
 - The `asyncHttpCall` function is in charge of doing a `request_uri` (from `resty.http` library) and calling the Http Endpoint
@@ -35,4 +35,4 @@ Two options are available in the `header_filter` or `body_filter` phases to work
   - Blocking call: if another request comes (and handled by the same worker process handling the synchronous call) the reponse will be delivered once the synchronous call is completed. Pay attention to KONG_NGINX_WORKER_PROCESSES: increase its value to decrease the risk of collision, but not avoid it.
 
 ## Example
-The example included in this repository includes, for demonstration only, both options. Please choose one of them.
+The example included in this repository includes, for demonstration purpose, both options. Please choose one of them.
