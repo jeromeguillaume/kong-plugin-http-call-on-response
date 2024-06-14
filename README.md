@@ -10,7 +10,7 @@ local res, err = httpc:request_uri("https://httpbin.org/uuid", {
     method = "GET",
   })
 ```
- The following error will be raised:
+ The following error will be raised by `http.new()`:
 ```lua
 failed to run header_filter_by_lua*: /usr/local/share/lua/5.1/kong/globalpatches.lua:581: API disabled in the context of header_filter_by_lua*
 ```
